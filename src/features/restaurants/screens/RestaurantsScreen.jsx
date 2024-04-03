@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import SearchBar from "../../../components/SearchBar";
+import RestaurantInfo from "../components/RestaurantInfo";
 
 const isAndroid = Platform.OS === "android";
 const topHeight = StatusBar.currentHeight;
@@ -19,7 +20,7 @@ const RestaurantsScreen = () => {
         <SearchBar />
       </View>
       <View style={styles.list}>
-        <Text>List</Text>
+        <RestaurantInfo />
       </View>
     </SafeAreaView>
   );

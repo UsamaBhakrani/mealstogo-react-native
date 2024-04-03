@@ -10,7 +10,7 @@ const SearchBar = () => {
       placeholder="Search"
       onChangeText={setSearchQuery}
       value={searchQuery}
-      mode="view"
+      mode="bar"
       icon={() => <AntDesign name="hearto" size={24} color="black" />}
     />
   );
