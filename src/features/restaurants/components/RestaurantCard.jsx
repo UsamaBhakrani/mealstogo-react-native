@@ -1,5 +1,11 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { Card } from "react-native-paper";
+import styled from "styled-components/native";
+
+const Title = styled.Text`
+  color: aquamarine;
+  font-size: larger;
+`;
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -21,6 +27,7 @@ const RestaurantInfo = ({ restaurant = {} }) => {
           source={{ uri: photos[0] }}
         />
         <Card.Title title={name} />
+        <Title>Hello</Title>
       </Card>
     </View>
   );
