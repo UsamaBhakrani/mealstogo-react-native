@@ -4,11 +4,10 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  Text,
   View,
 } from "react-native";
 import SearchBar from "../../../components/SearchBar";
-import RestaurantInfo from "../components/RestaurantInfo";
+import RestaurantInfo from "../components/RestaurantCard";
 
 const isAndroid = Platform.OS === "android";
 const topHeight = StatusBar.currentHeight;
