@@ -2,9 +2,8 @@ import { StyleSheet, View, Text } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 
-const Title = styled.Text`
-  color: aquamarine;
-  font-size: larger;
+const Title = styled(Text)`
+  color: blue;
 `;
 
 const RestaurantInfo = ({ restaurant = {} }) => {
@@ -27,8 +26,8 @@ const RestaurantInfo = ({ restaurant = {} }) => {
           source={{ uri: photos[0] }}
         />
         <Card.Title title={name} />
-        <Title>Hello</Title>
       </Card>
+      <Title>Hello</Title>
     </View>
   );
 };
