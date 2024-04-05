@@ -28,7 +28,7 @@ const RestaurantInfo = ({ restaurant = {} }) => {
 
   return (
     <View>
-      <CardSkin>
+      <CardSkin elevation={5}>
         <CardCover key={name} source={{ uri: photos[0] }} />
         <CardTitle title={name} />
       </CardSkin>

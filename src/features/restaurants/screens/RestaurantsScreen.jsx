@@ -22,7 +22,7 @@ const RestaurantsScreen = () => {
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  ${topHeight && `margin-top:${topHeight}`}
+  ${topHeight && `margin-top:${topHeight}px`}
 `;
 
 const SearchContainer = styled.View`
