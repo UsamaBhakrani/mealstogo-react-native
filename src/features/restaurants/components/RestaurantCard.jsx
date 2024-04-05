@@ -1,19 +1,18 @@
 import { View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
+import { theme } from "../../../infrastructure/theme";
 
 const CardSkin = styled(Card)`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const CardCover = styled(Card.Cover)`
-  padding: 16px;
-  background-color: white;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
-const CardTitle = styled(Card.Title)`
-  color: red;
-`;
+const CardTitle = styled(Card.Title)``;
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -30,7 +29,10 @@ const RestaurantInfo = ({ restaurant = {} }) => {
     <View>
       <CardSkin elevation={5}>
         <CardCover key={name} source={{ uri: photos[0] }} />
-        <CardTitle title={name} />
+        <CardTitle
+          title={name}
+          titleStyle={{ color: theme.colors.ui.success }}
+        />
       </CardSkin>
     </View>
   );
