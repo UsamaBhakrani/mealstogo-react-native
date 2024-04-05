@@ -3,7 +3,8 @@ import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { theme } from "../../../infrastructure/theme";
 import { fontWeights } from "../../../infrastructure/theme/fonts";
-
+import { SvgXml } from "react-native-svg";
+import star from "../../../../assets/star";
 const CardSkin = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
@@ -18,7 +19,9 @@ const CardTitle = styled(Card.Title)`
   padding: ${(props) => props.theme.space[3]};
 `;
 
-const Info = styled(View)``;
+const SvgContainer = styled(View)`
+  padding: ${(props) => props.theme.space[2]};
+`;
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -35,20 +38,21 @@ const RestaurantInfo = ({ restaurant = {} }) => {
     <View>
       <CardSkin elevation={5}>
         <CardCover key={name} source={{ uri: photos[0] }} />
-        <Info>
-          <CardTitle
-            title={name}
-            titleStyle={{
-              fontFamily: theme.fonts.body,
-              color: theme.colors.ui.primary,
-            }}
-            subtitle={address}
-            subTitleStyle={{
-              fontFamily: theme.fonts.heading,
-              color: theme.colors.ui.primary,
-            }}
-          />
-        </Info>
+        <CardTitle
+          title={name}
+          titleStyle={{
+            fontFamily: theme.fonts.body,
+            color: theme.colors.ui.primary,
+          }}
+          subtitle={address}
+          subTitleStyle={{
+            fontFamily: theme.fonts.heading,
+            color: theme.colors.ui.primary,
+          }}
+        />
+        <SvgContainer>
+          <SvgXml xml={star} width={30} height={30} />
+        </SvgContainer>
       </CardSkin>
     </View>
   );
