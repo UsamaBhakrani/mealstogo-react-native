@@ -2,6 +2,7 @@ import { View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { theme } from "../../../infrastructure/theme";
+import { fontWeights } from "../../../infrastructure/theme/fonts";
 
 const CardSkin = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -12,7 +13,12 @@ const CardCover = styled(Card.Cover)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
-const CardTitle = styled(Card.Title)``;
+const CardTitle = styled(Card.Title)`
+  font-size: ${(props) => props.theme.fontSizes.body};
+  padding: ${(props) => props.theme.space[3]};
+`;
+
+const Info = styled(View)``;
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -29,10 +35,20 @@ const RestaurantInfo = ({ restaurant = {} }) => {
     <View>
       <CardSkin elevation={5}>
         <CardCover key={name} source={{ uri: photos[0] }} />
-        <CardTitle
-          title={name}
-          titleStyle={{ color: theme.colors.ui.success }}
-        />
+        <Info>
+          <CardTitle
+            title={name}
+            titleStyle={{
+              fontFamily: theme.fonts.body,
+              color: theme.colors.ui.primary,
+            }}
+            subtitle={address}
+            subTitleStyle={{
+              fontFamily: theme.fonts.heading,
+              color: theme.colors.ui.primary,
+            }}
+          />
+        </Info>
       </CardSkin>
     </View>
   );
