@@ -5,6 +5,8 @@ import { theme } from "../../../infrastructure/theme";
 import { fontWeights } from "../../../infrastructure/theme/fonts";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
+import open from "../../../../assets/open";
+
 const CardSkin = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
@@ -21,6 +23,13 @@ const CardTitle = styled(Card.Title)`
 
 const SvgContainer = styled(View)`
   padding: ${(props) => props.theme.space[2]};
+  flex-direction: row;
+`;
+
+const OpenContainer = styled(View)`
+  padding: ${(props) => props.theme.space[2]};
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const RestaurantInfo = ({ restaurant = {} }) => {
@@ -29,11 +38,12 @@ const RestaurantInfo = ({ restaurant = {} }) => {
     icon,
     photos = ["https://picsum.photos/700"],
     address = "100 Street, Random Area",
-    isOpenNow = "",
+    isOpenNow = true,
     rating = 4.5,
     isClosedTemporarily = true,
   } = restaurant;
 
+  const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
     <View>
       <CardSkin elevation={5}>
@@ -50,9 +60,14 @@ const RestaurantInfo = ({ restaurant = {} }) => {
             color: theme.colors.ui.primary,
           }}
         />
-        <SvgContainer>
-          <SvgXml xml={star} width={30} height={30} />
-        </SvgContainer>
+        <OpenContainer>
+          <SvgContainer>
+            {ratingArray.map((a, index) => {
+              return <SvgXml key={index} xml={star} width={30} height={30} />;
+            })}
+          </SvgContainer>
+          {isOpenNow && <SvgXml xml={open} width={30} height={30} />}
+        </OpenContainer>
       </CardSkin>
     </View>
   );
