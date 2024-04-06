@@ -1,8 +1,7 @@
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { theme } from "../../../infrastructure/theme";
-import { fontWeights } from "../../../infrastructure/theme/fonts";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
@@ -22,7 +21,6 @@ const CardTitle = styled(Card.Title)`
 `;
 
 const SvgContainer = styled(View)`
-  padding: ${(props) => props.theme.space[2]};
   flex-direction: row;
 `;
 
@@ -30,16 +28,16 @@ const OpenContainer = styled(View)`
   padding: ${(props) => props.theme.space[2]};
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
-    icon,
     photos = ["https://picsum.photos/700"],
     address = "100 Street, Random Area",
     isOpenNow = true,
-    rating = 4.5,
+    rating = 5,
     isClosedTemporarily = true,
   } = restaurant;
 
@@ -63,9 +61,14 @@ const RestaurantInfo = ({ restaurant = {} }) => {
         <OpenContainer>
           <SvgContainer>
             {ratingArray.map((a, index) => {
-              return <SvgXml key={index} xml={star} width={30} height={30} />;
+              return <SvgXml key={index} xml={star} width={20} height={20} />;
             })}
           </SvgContainer>
+          {isClosedTemporarily && (
+            <Text style={{ color: theme.colors.ui.error }}>
+              CLOSED TEMPORARILY
+            </Text>
+          )}
           {isOpenNow && <SvgXml xml={open} width={30} height={30} />}
         </OpenContainer>
       </CardSkin>
