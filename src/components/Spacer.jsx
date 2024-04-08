@@ -1,43 +1,32 @@
-import { View } from "react-native";
 import styled from "styled-components/native";
 
-const TopSmall = styled.View`
-  margin-top: 4px;
-`;
-const TopMedium = styled.View`
-  margin-top: 8px;
-`;
-const TopLarge = styled.View`
-  margin-top: 16px;
+const getVariant = (position, size, theme) => {
+  const sizeIndex = sizeVariant[size];
+  const property = positionVariant[position];
+  const value = theme.space[sizeIndex];
+  return `${property}:${value}`;
+};
+
+const Spacer = styled.View`
+  ${({ position, size, theme }) => getVariant(position, size, theme)}
 `;
 
-const LeftSmall = styled.View`
-  margin-left: 4px;
-`;
-const LeftMedium = styled.View`
-  margin-left: 8px;
-`;
-const LeftLarge = styled.View`
-  margin-left: 16px;
-`;
+const sizeVariant = {
+  small: 1,
+  medium: 2,
+  large: 3,
+};
 
-const Spacer = ({ variant }) => {
-  if (variant === top.medium) {
-    return <TopMedium />;
-  }
-  if (variant === top.large) {
-    return <TopLarge />;
-  }
-  if (variant === left.small) {
-    return <LeftSmall />;
-  }
-  if (variant === left.medium) {
-    return <LeftMedium />;
-  }
-  if (variant === left.large) {
-    return <LeftLarge />;
-  }
-  return <TopSmall />;
+const positionVariant = {
+  top: "marginTop",
+  left: "marginLeft",
+  right: "marginRight",
+  bottom: "marginBottom",
+};
+
+Spacer.defaultProps = {
+  postion: "top",
+  size: small,
 };
 
 export default Spacer;
