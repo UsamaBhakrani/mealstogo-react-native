@@ -1,8 +1,9 @@
 import React from "react";
-import { Platform, SafeAreaView, StatusBar } from "react-native";
+import { Platform, SafeAreaView, StatusBar, FlatList } from "react-native";
 import SearchBar from "../../../components/SearchBar";
 import RestaurantInfo from "../components/RestaurantCard";
 import styled from "styled-components/native";
+import { theme } from "../../../infrastructure/theme";
 
 const isAndroid = Platform.OS === "android";
 const topHeight = StatusBar.currentHeight;
@@ -14,7 +15,13 @@ const RestaurantsScreen = () => {
         <SearchBar />
       </SearchContainer>
       <RestaurantContainer>
-        <RestaurantInfo />
+        <FlatList
+          data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }]}
+          renderItem={() => <RestaurantInfo />}
+          keyExtractor={(item) => item.name}
+          contentContainerStyle={{ backgroundColor: theme.colors.bg.primary }}
+          showsVerticalScrollIndicator={false}
+        />
       </RestaurantContainer>
     </SafeArea>
   );
@@ -31,7 +38,7 @@ const SearchContainer = styled.View`
 
 const RestaurantContainer = styled.View`
   flex: 1;
-  padding: ${(props) => props.theme.space[3]};
+  padding: ${(props) => props.theme.space[4]};
   background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
 

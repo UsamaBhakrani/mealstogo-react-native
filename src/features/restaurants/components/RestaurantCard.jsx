@@ -8,6 +8,7 @@ import open from "../../../../assets/open";
 
 const CardSkin = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
+  margin-bottom: ${props => props.theme.space[3]};
 `;
 
 const CardCover = styled(Card.Cover)`
@@ -42,6 +43,7 @@ const RestaurantInfo = ({ restaurant = {} }) => {
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
+
   return (
     <View>
       <CardSkin elevation={5}>
@@ -65,9 +67,7 @@ const RestaurantInfo = ({ restaurant = {} }) => {
             })}
           </SvgContainer>
           {isClosedTemporarily && (
-            <Text style={{ color: theme.colors.ui.error }}>
-              CLOSED TEMPORARILY
-            </Text>
+            <Text style={{ color: theme.colors.ui.error }}>CLOSED</Text>
           )}
           {isOpenNow && <SvgXml xml={open} width={30} height={30} />}
         </OpenContainer>
